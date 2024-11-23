@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TodoItem({ task, setTasks, handleSetCompleted }) {
   const handleDeleteTask = async (id) => {
@@ -39,11 +40,13 @@ function TodoItem({ task, setTasks, handleSetCompleted }) {
       </div>
       <link></link>
       <div className="flex items-center gap-2">
-        <img
-          className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"
-          src="edit.svg"
-          alt="edit icon"
-        />
+        <Link to={`/edit-task/`}>
+          <img
+            className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"
+            src="edit.svg"
+            alt="edit icon"
+          />
+        </Link>
         <img
           className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"
           src="close.svg"

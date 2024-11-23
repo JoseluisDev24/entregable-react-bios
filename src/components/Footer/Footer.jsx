@@ -1,5 +1,4 @@
 import React from "react";
-
 function Footer({ tasks, setTasks }) {
   const handleDeleteCompleted = async () => {
     const completedTasks = tasks.filter((task) => task.isCompleted);
