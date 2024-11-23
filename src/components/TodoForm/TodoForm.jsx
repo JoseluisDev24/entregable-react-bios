@@ -1,7 +1,7 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-function TodoForm({ setTasks }) {
+function TodoForm({ task, setTasks }) {
   const nameRef = useRef();
 
   const handleAddTask = (event) => {
@@ -11,9 +11,9 @@ function TodoForm({ setTasks }) {
     if (!taskValue) return;
 
     const data = {
-      id: Date.now(),
       name: taskValue,
-      completed: false,
+      isCompleted: false,
+      id: Date.now().toString(),
     };
 
     const url = "http://localhost:3000/todos";

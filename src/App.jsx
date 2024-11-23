@@ -18,17 +18,35 @@ function App() {
     getTasks();
   }, []);
 
+  const handleSetCompleted = (id) => {
+    const updatedList = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task;
+    });
+    setTasks(updatedList);
+  };
+
   return (
     <div className="bg-gray-900 min-h-screen h-full text-gray-100 flex items-center justify-center py-20 px-5 font-inter">
       <div className="container flex flex-col max-w-xl">
         <Title />
-        <TodoForm setTasks={setTasks} />
+        <TodoForm tasks={tasks} setTasks={setTasks} />
         <TodoList>
           {tasks.map((task) => (
-            <TodoItem key={task.id} task={task} />
+            <TodoItem
+              key={task.id}
+              task={task}
+              setTasks={setTasks}
+              handleSetCompleted={handleSetCompleted}
+            />
           ))}
         </TodoList>
-        <Footer />
+        <Footer tasks={tasks} setTasks={setTasks} />
       </div>
     </div>
   );
