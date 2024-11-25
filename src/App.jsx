@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Title from "./components/Title/Title";
@@ -6,7 +5,8 @@ import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
 import TodoItem from "./components/TodoItem/TodoItem";
 import Footer from "./components/Footer/Footer";
-import EditTask from "./components/EditTask/EditTask";
+import EditTask from "./components/pages/EditTask/EditTask";
+
 function App() {
   const [tasks, setTasks] = useState([]);
 
@@ -32,12 +32,8 @@ function App() {
     setTasks(updatedList);
   };
 
-  return (
-    <>
-      <Routes>
-        <Route path="*" element={<Navigate to="/" />} />
-        <Route path="edit-task" element={<EditTask tasks={tasks} />} />
-      </Routes>
+  const Home = () => {
+    return (
       <div className="bg-gray-900 min-h-screen h-full text-gray-100 flex items-center justify-center py-20 px-5 font-inter">
         <div className="container flex flex-col max-w-xl">
           <Title />
@@ -55,7 +51,17 @@ function App() {
           <Footer tasks={tasks} setTasks={setTasks} />
         </div>
       </div>
-    </>
+    );
+  };
+
+  return (
+    <Routes>
+      <Route path="*" element={<Navigate to="/" />} />
+
+      <Route path="/" element={<Home />} />
+
+      <Route path="/edit-task" element={<EditTask tasks={tasks} />} />
+    </Routes>
   );
 }
 
