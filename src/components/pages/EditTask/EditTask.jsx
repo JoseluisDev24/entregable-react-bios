@@ -5,23 +5,23 @@ function EditTask({ tasks }) {
   return (
     <div className="bg-gray-900 min-h-screen h-full text-gray-100 flex items-center justify-center">
       <div className="flex flex-col items-center justify-center h-96 text-lg gap-3">
-        <h1 className="text-3xl font-anton font-bold tracking-widest">
+        <h1 className="text-4xl font-anton font-bold tracking-widest">
           Edit Task
         </h1>
-        <form className="flex flex-col border-2 border-solid border-gray-600 p-4 rounded-lg font-medium gap-2">
+        <form className="flex flex-col shadow-xl shadow-blue-800 border-2 border-solid border-gray-600 p-4 rounded-lg w-80 font-medium gap-2">
           <label htmlFor="taskName">Task name</label>
           <input
             id="taskName"
             type="text"
-            className="rounded-md h-9 border-solid border border-black cursor-text text-black px-2"
+            className="rounded-md h-9 text-sm border-solid border border-black cursor-text text-black px-2"
           />
           <label htmlFor="taskStatus">Status</label>
           <select
             id="taskStatus"
-            className="mb-4 rounded-md h-9 border-solid border border-black text-black px-2"
+            className="mb-4 rounded-md text-sm h-9 border-solid border border-black text-black px-2"
           >
-            <option value="completed">Completed</option>
-            <option value="incomplete">Incomplete</option>
+            <option value="completed" className="text-sm">Completed</option>
+            <option value="incomplete" className="text-sm">Incomplete</option>
           </select>
           <button
             type="submit"
