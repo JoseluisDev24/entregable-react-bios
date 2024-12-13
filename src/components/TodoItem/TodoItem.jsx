@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TodoItem({ task, setTasks, handleSetCompleted }) {
+function TodoItem({ tasks, task, setTasks }) {
   const handleDeleteTask = async (id) => {
     const url = `http://localhost:3000/todos/${id}`;
     try {
@@ -15,6 +15,19 @@ function TodoItem({ task, setTasks, handleSetCompleted }) {
     } catch (error) {
       console.error("Error:", error.message);
     }
+  };
+
+  const handleSetCompleted = (id) => {
+    const updatedList = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task;
+    });
+    setTasks(updatedList);
   };
 
   return (
@@ -39,8 +52,6 @@ function TodoItem({ task, setTasks, handleSetCompleted }) {
         </p>
       </div>
       <div className="flex items-center gap-2">
-        
-
         <Link to={`edit-task`}>
           <img
             className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"

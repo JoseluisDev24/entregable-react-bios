@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 
-function TodoForm({ task, setTasks }) {
+function TodoForm({ tasks, setTasks }) {
   const nameRef = useRef();
 
   const handleAddTask = (event) => {
@@ -12,6 +12,7 @@ function TodoForm({ task, setTasks }) {
 
     const data = {
       name: taskValue,
+      description: "",
       isCompleted: false,
       id: Date.now().toString(),
     };
