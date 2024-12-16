@@ -1,5 +1,7 @@
 import React from "react";
-function Footer({ tasks, setTasks }) {
+import { useContextProvider } from "../ContextProvider/ContextProvider";
+function Footer() {
+  const { tasks, setTasks } = useContextProvider();
   const handleDeleteCompleted = async () => {
     const completedTasks = tasks.filter((task) => task.isCompleted);
 

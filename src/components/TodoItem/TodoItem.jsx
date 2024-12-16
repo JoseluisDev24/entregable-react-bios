@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContextProvider } from "../ContextProvider/ContextProvider";
 
-function TodoItem({ tasks, task, setTasks }) {
+function TodoItem({ task }) {
+  const { tasks, setTasks } = useContextProvider();
   const handleDeleteTask = async (id) => {
     const url = `http://localhost:3000/todos/${id}`;
     try {

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContextProvider } from "../../ContextProvider/ContextProvider";
 
-function EditTask({ tasks }) {
+function EditTask() {
+  const { tasks, setTasks } = useContextProvider();
   return (
     <div className="bg-gray-900 min-h-screen h-full text-gray-100 flex items-center justify-center">
       <div className="flex flex-col items-center justify-center h-96 text-lg gap-3">
@@ -20,8 +22,12 @@ function EditTask({ tasks }) {
             id="taskStatus"
             className="mb-4 rounded-md text-sm h-9 border-solid border border-black text-black px-2"
           >
-            <option value="completed" className="text-sm">Completed</option>
-            <option value="incomplete" className="text-sm">Incomplete</option>
+            <option value="completed" className="text-sm">
+              Completed
+            </option>
+            <option value="incomplete" className="text-sm">
+              Incomplete
+            </option>
           </select>
           <button
             type="submit"

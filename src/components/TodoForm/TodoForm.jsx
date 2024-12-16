@@ -1,7 +1,10 @@
 import React from "react";
 import { useRef } from "react";
+import { useContextProvider } from "../ContextProvider/ContextProvider";
 
-function TodoForm({ tasks, setTasks }) {
+function TodoForm() {
+  const { tasks, setTasks } = useContextProvider();
+
   const nameRef = useRef();
 
   const handleAddTask = (event) => {
