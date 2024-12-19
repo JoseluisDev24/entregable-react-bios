@@ -19,7 +19,7 @@ function TodoForm() {
       isCompleted: false,
     };
 
-    const url = "http://localhost:5137/todos/tasks";
+    const url = "http://localhost:5137/tasks";
 
     async function postData(data) {
       try {

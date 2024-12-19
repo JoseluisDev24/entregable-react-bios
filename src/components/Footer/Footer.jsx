@@ -8,7 +8,7 @@ function Footer() {
     try {
       await Promise.all(
         completedTasks.map(async (task) => {
-          const url = `http://localhost:5137/todos/tasks/${task._id}`;
+          const url = `http://localhost:5137/tasks/${task._id}`;
           const response = await fetch(url, { method: "DELETE" });
 
           if (!response.ok) {

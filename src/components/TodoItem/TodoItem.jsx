@@ -5,7 +5,7 @@ import { useContextProvider } from "../ContextProvider/ContextProvider";
 function TodoItem({ task }) {
   const { tasks, setTasks } = useContextProvider();
   const handleDeleteTask = async (id) => {
-    const url = `http://localhost:5137/todos/tasks/${id}`;
+    const url = `http://localhost:5137/tasks/${id}`;
     try {
       const response = await fetch(url, { method: "DELETE" });
 
@@ -20,7 +20,7 @@ function TodoItem({ task }) {
   };
 
   const handleSetCompleted = async (id, isCompleted) => {
-    const url = `http://localhost:5137/todos/tasks/${id}`;
+    const url = `http://localhost:5137/tasks/${id}`;
 
     try {
       const response = await fetch(url, {

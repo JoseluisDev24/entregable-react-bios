@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import TodoApp from "./components/TodoApp/TodoApp";
 import EditTask from "./components/pages/EditTask/EditTask";
+
 function App() {
   return (
     <Routes>
