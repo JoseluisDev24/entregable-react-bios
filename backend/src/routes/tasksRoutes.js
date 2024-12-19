@@ -1,10 +1,10 @@
 import express from "express";
-import taskSchema from "../models/task.js";
+import TaskSchema from "../models/task.js";
 const router = express.Router();
 
 //create task
 router.post("/tasks", async (req, res) => {
-  const task = new taskSchema(req.body);
+  const task = new TaskSchema(req.body);
   await task
     .save()
     .then((task) => res.json(task))
@@ -13,8 +13,7 @@ router.post("/tasks", async (req, res) => {
 
 //read tasks
 router.get("/tasks", async (req, res) => {
-  await taskSchema
-    .find()
+  await TaskSchema.find()
     .then((tasks) => res.json(tasks))
     .catch((err) => res.status(400).json({ message: err.message }));
 });
@@ -22,7 +21,7 @@ router.get("/tasks", async (req, res) => {
 //read a specific task
 router.get("/tasks/:id", async (req, res) => {
   try {
-    const data = await taskSchema.findById(req.params.id);
+    const data = await TaskSchema.findById(req.params.id);
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -31,20 +30,18 @@ router.get("/tasks/:id", async (req, res) => {
 
 //delete task
 router.delete("/tasks/:taskId", async (req, res) => {
-  await taskSchema
-    .findByIdAndDelete(req.params.taskId)
+  await TaskSchema.findByIdAndDelete(req.params.taskId)
     .then((task) => res.json(task))
     .catch((err) => res.status(400).json({ message: err.message }));
 });
 
 //update task
-router.patch("/tasks/:taskId", (req, res) => {
+router.patch("/tasks/:taskId", async (req, res) => {
   const { taskId } = req.params;
   const updatedTask = req.body;
   const options = { new: true };
 
-  taskSchema
-    .findByIdAndUpdate(taskId, updatedTask, options)
+  await TaskSchema.findByIdAndUpdate(taskId, updatedTask, options)
     .then((task) => {
       if (!task) {
         return res.status(404).json({ message: "Task not found" });

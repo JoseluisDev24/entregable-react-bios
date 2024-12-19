@@ -16,7 +16,7 @@ const TodoApp = () => {
         <TodoForm />
         <TodoList>
           {tasks.map((task) => (
-            <TodoItem key={task.id} task={task} />
+            <TodoItem key={task._id} task={task} />
           ))}
         </TodoList>
         <Footer />

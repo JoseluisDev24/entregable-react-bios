@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors"
 import mongoose from "mongoose";
 import tasksRoutes from "./src/routes/tasksRoutes.js";
 import errorHandler from "./src/middlewares/error-handler.mjs";
@@ -23,6 +24,7 @@ mongoose.connect(mongoUri).then(() => {
 });
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use(requestLogger);

@@ -14,13 +14,12 @@ function TodoForm() {
     if (!taskValue) return;
 
     const data = {
-      name: taskValue,
+      title: taskValue,
       description: "",
       isCompleted: false,
-      id: Date.now().toString(),
     };
 
-    const url = "http://localhost:3000/todos";
+    const url = "http://localhost:5137/todos/tasks";
 
     async function postData(data) {
       try {

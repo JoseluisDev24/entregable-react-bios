@@ -14,7 +14,7 @@ export function ContextProvider({ children }) {
 
   useEffect(() => {
     const getTasks = async () => {
-      const response = await fetch("http://localhost:3000/todos");
+      const response = await fetch("http://localhost:5137/todos/tasks");
       const data = await response.json();
       setTasks(data);
     };
