@@ -55,14 +55,14 @@ function TodoItem({ task }) {
         {task.isCompleted ? (
           <div
             className="bg-green-700 rounded-full border border-transparent p-1 cursor-pointer"
-            onClick={() => handleSetCompleted(task._id)}
+            onClick={() => handleSetCompleted(task._id, task.isCompleted)}
           >
             <img className="h-4 w-4" src="check.svg" alt="check icon" />
           </div>
         ) : (
           <span
             className="border border-solid border-gray-500 rounded-full p-3 cursor-pointer"
-            onClick={() => handleSetCompleted(task._id)}
+            onClick={() => handleSetCompleted(task._id, task.isCompleted )}
           ></span>
         )}
 
