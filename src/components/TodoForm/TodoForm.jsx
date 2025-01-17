@@ -19,17 +19,18 @@ function TodoForm() {
       isCompleted: false,
     };
 
-    const url = "http://localhost:5137/tasks";
-
     async function postData(data) {
       try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        const response = await fetch(
+          "https://back-next-js.vercel.app/api/tasks",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
 
         if (response.ok) {
           const createTask = await response.json();

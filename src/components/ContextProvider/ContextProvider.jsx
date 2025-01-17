@@ -14,7 +14,7 @@ export function ContextProvider({ children }) {
 
   useEffect(() => {
     const getTasks = async () => {
-      const response = await fetch("http://localhost:5137/tasks");
+      const response = await fetch("https://back-next-js.vercel.app/api/tasks");
       const data = await response.json();
       setTasks(data);
     };
